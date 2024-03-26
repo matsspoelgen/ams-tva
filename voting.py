@@ -41,3 +41,7 @@ def happiness(preferences, outcome):
         happiness_level = len(pref) - pref.index(outcome) - 1
         happiness_levels.append(happiness_level)
     return happiness_levels
+
+def analyze_scheme_for_voter(preferences, voter, scheme):
+    print(f"Analyzing {scheme}-scheme for voter {voter}...")
+    print('unimplemented')

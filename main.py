@@ -1,6 +1,6 @@
 import csv
 import sys
-from voting import plurality, voting_for_two, anti_plurality, borda, happiness
+from voting import plurality, voting_for_two, anti_plurality, borda, happiness, analyze_scheme_for_voter
 import pandas as pd
 
 def read_preferences(filename):
@@ -30,12 +30,23 @@ def main(filename):
     scheme, preferences = read_preferences(filename)
     candidates = set(preferences[0])
     
-    print("Plurality Voting Outcome:", plurality(preferences))
-    print("Voting for Two Outcome:", voting_for_two(preferences))
-    print("Anti-Plurality Voting Outcome:", anti_plurality(preferences, candidates))
-    borda_outcome = borda(preferences, candidates)
-    print("Borda Voting Outcome:", borda_outcome)
-    print("Happiness Levels (Borda):", happiness(preferences, borda_outcome))
+    strategies = {
+        'plurality': plurality,
+        'voting_for_two': voting_for_two,
+        'anti_plurality': anti_plurality,
+        'borda': borda
+    }
+
+    if scheme not in strategies:
+        print("Invalid voting scheme")
+        return
+        
+    scheme = strategies[scheme]
+    print("Voting scheme:", scheme)
+    voter = 1
+
+
+    analyze_scheme_for_voter(preferences, voter, scheme)
 
 if __name__ == "__main__":
     filename = 'preferences.csv'
