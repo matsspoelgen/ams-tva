@@ -4,25 +4,30 @@ from voting import plurality, voting_for_two, anti_plurality, borda, happiness
 import pandas as pd
 
 def read_preferences(filename):
-    pref_df = pd.read_csv(filename, header=None)
-    pref_df = pref_df.transpose()
+    input_df = pd.read_csv(filename, header=None)
+
+    # first row contains the voting scheme
+    scheme = input_df.iloc[0, 0]
+    input_df.drop(0, inplace=True)
+
+    input_df = input_df.transpose()
     removed_voters = []
 
-    for i in range(pref_df.shape[0]):
-        pref = pref_df.iloc[i].dropna().tolist()
+    for i in range(input_df.shape[0]):
+        pref = input_df.iloc[i].dropna().tolist()
         if len(pref) != len(set(pref)):
             removed_voters.append(i)
-            pref_df.drop(i, inplace=True)
+            input_df.drop(i, inplace=True)
         else:
-            pref_df.iloc[i] = pref
+            input_df.iloc[i] = pref
 
     if removed_voters:
         print("Discarded invalid voters:", removed_voters)
 
-    return pref_df.values.tolist()
+    return scheme, input_df.values.tolist()
 
 def main(filename):
-    preferences = read_preferences(filename)
+    scheme, preferences = read_preferences(filename)
     candidates = set(preferences[0])
     
     print("Plurality Voting Outcome:", plurality(preferences))
