@@ -75,16 +75,17 @@ def get_strategic_options_for_voter(system_preferences: SystemPreferences, voter
 
         # Calculate results for the current permutation
         outcome, happiness_levels = get_vote_result(system_preferences, scheme)
+        voter_happiness = happiness_levels[voter_index]
         overall_happiness: float = sum(happiness_levels)
 
         if i == 0: # Remebmer the first (original) permutation's results
-            true_voter_happiness = happiness_levels[voter_index]
+            true_voter_happiness = voter_happiness
             true_overall_happiness = overall_happiness
 
         # print(f"Permutation {i+1}: Outcome: {outcome}, Happiness levels: {happiness_levels}")
 
         # Store strategic voting options
-        is_strategic = overall_happiness > true_overall_happiness
+        is_strategic = voter_happiness > true_voter_happiness
         if is_strategic:
             strategic_voting_options.append(VotingOption(voter_prefs, outcome, happiness_levels[voter_index], overall_happiness, true_overall_happiness))
 
