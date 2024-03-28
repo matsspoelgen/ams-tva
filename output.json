@@ -667,5 +667,5 @@
             }
         ]
     ],
-    "strategic_voting_risk": "unimplemented"
+    "strategic_voting_risk": 0.45
 }

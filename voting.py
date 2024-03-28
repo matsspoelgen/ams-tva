@@ -2,6 +2,7 @@ from random import randrange
 from itertools import permutations
 from typing import List
 from tva_types import SystemPreferences, Scheme, VotingOption
+import math
 
 def happiness(preferences: SystemPreferences, outcome: str) -> List[float]:
     """ Calculate the happiness levels for each voter based on the outcome. """
@@ -92,6 +93,10 @@ def get_strategic_options_for_voter(system_preferences: SystemPreferences, voter
     return strategic_voting_options
 
 def get_basic_tva_result(system_preferences: SystemPreferences, scheme: Scheme) -> dict:
+    """ Calculate the basic TVA result for a given voting scheme and set of preferences. """
+
+    num_voters = len(system_preferences)
+    num_candidates = len(system_preferences[0])
 
     basic_tva_result = {}
     non_strategic_outcome, non_strategic_happiness_levels = get_vote_result(system_preferences, scheme)
@@ -100,10 +105,19 @@ def get_basic_tva_result(system_preferences: SystemPreferences, scheme: Scheme) 
     basic_tva_result["non_strategic_happiness_levels"] = non_strategic_happiness_levels
     basic_tva_result["voters"] = []
 
-    for voter_index in range(len(system_preferences)):
+    num_strategic_options = 0
+    for voter_index in range(num_voters):
         strategic_voting_options = get_strategic_options_for_voter(system_preferences, voter_index, scheme)
+        num_strategic_options += len(strategic_voting_options)
         basic_tva_result["voters"].append(strategic_voting_options)
 
-    basic_tva_result["strategic_voting_risk"] = "unimplemented"
+    basic_tva_result["strategic_voting_risk"] = get_strategic_voting_risk(num_strategic_options, num_voters, num_candidates)
 
     return basic_tva_result
+
+def get_strategic_voting_risk(num_strategic_options: int, num_voters: int, num_candidates: int) -> float:
+    """ Ratio of strategic voting options to the total number of options. """
+
+    permutations_per_voter = math.factorial(num_candidates)
+    total_options = permutations_per_voter * num_voters
+    return num_strategic_options / total_options
