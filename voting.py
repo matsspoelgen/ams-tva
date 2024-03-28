@@ -1,8 +1,7 @@
 from random import randrange
 from itertools import permutations
 from typing import List
-from tva_types import SystemPreferences, Scheme
-from voting_option import VotingOption
+from tva_types import SystemPreferences, Scheme, VotingOption
 
 def happiness(preferences: SystemPreferences, outcome: str) -> List[float]:
     """ Calculate the happiness levels for each voter based on the outcome. """
@@ -91,3 +90,20 @@ def get_strategic_options_for_voter(system_preferences: SystemPreferences, voter
     # Restore the original preferences
     system_preferences[voter_index] = voter_original_prefs
     return strategic_voting_options
+
+def get_basic_tva_result(system_preferences: SystemPreferences, scheme: Scheme) -> dict:
+
+    basic_tva_result = {}
+    non_strategic_outcome, non_strategic_happiness_levels = get_vote_result(system_preferences, scheme)
+
+    basic_tva_result["non_strategic_outcome"] = non_strategic_outcome
+    basic_tva_result["non_strategic_happiness_levels"] = non_strategic_happiness_levels
+    basic_tva_result["voters"] = []
+
+    for voter_index in range(len(system_preferences)):
+        strategic_voting_options = get_strategic_options_for_voter(system_preferences, voter_index, scheme)
+        basic_tva_result["voters"].append(strategic_voting_options)
+
+    basic_tva_result["strategic_voting_risk"] = "unimplemented"
+
+    return basic_tva_result
