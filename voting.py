@@ -9,7 +9,7 @@ def happiness(preferences: SystemPreferences, outcome: str) -> List[float]:
     # The happiness level is the position of the outcome in the preference list
     happiness_levels = []
     for pref in preferences:
-        happiness_level = len(pref) - pref.index(outcome) - 1
+        happiness_level = 1 - (pref.index(outcome) / (len(pref) - 1))
         happiness_levels.append(happiness_level)
     return happiness_levels
 
