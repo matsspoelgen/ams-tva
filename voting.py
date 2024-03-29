@@ -55,10 +55,13 @@ def alternate_happiness(preferences, outcome, variant, acceptance=1, happiness_r
     return happiness_levels
 
 
-def get_vote_result(preferences: SystemPreferences, scheme: Scheme, real_prefs: SystemPreferences, get_full_outcome: bool = False) -> tuple[str, List[float]]:
+def get_vote_result(preferences: SystemPreferences, scheme: Scheme, real_prefs: SystemPreferences =[], get_full_outcome: bool = False) -> tuple[str, List[float]]:
     """ Calculate the outcome and happiness levels for a given voting scheme and set of preferences. """
     outcome , full_outcome= scheme(preferences)
-    happiness_levels = happiness(preferences, outcome)
+    if real_prefs:
+        happiness_levels = happiness(real_prefs, outcome)
+    else:
+        happiness_levels = happiness(preferences, outcome)
     if get_full_outcome:
         return outcome, happiness_levels, full_outcome
     return outcome, happiness_levels
@@ -107,7 +110,7 @@ def get_strategic_options_for_voter(system_preferences: SystemPreferences, voter
     return strategic_voting_options
 
 
-def get_basic_tva_result(system_preferences: SystemPreferences, scheme: Scheme, runoff: int = 0, real_prefs: SystemPreferences = []) -> dict:
+def get_basic_tva_result(system_preferences: SystemPreferences, schemes: Scheme, runoff: int = 0, real_prefs: SystemPreferences = []) -> dict:
     """ Calculate the basic TVA result for a given voting scheme and set of preferences. """
 
     num_voters = len(system_preferences)
