@@ -25,7 +25,7 @@ def generate_and_write_preferences(num_voters: int, num_candidates: int, file_pa
 
     with open(file_path, mode='w', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow([voting_scheme] + ['null' for _ in range(num_voters - 1)])  # Adjust for your definition of 'null'
+        writer.writerow([voting_scheme] + ['null' for _ in range(num_voters - 1)])  # Write the voting scheme with other fields null
         for preference in preferences:
             writer.writerow(preference)  # Then, write the preferences for each candidate
 
