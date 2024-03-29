@@ -61,3 +61,9 @@ if __name__ == "__main__":
         results = run_experiment_num_voters_candidates(file_path, output_file, num_voters, 3, "plurality")
 
        # visualize_results(results)
+    print("Running experiment 2: increasing number of candidates")
+    for num_candidates in [3, 5, 7, 10]:
+        print(f"Number of candidates: {num_candidates}")
+        results = run_experiment_num_voters_candidates(file_path, output_file, 20, num_candidates, "plurality")
+
+        #visualize_results(results)
