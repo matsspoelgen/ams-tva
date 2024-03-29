@@ -1,5 +1,7 @@
 import csv
+import json
 import random
+import main
 
 def generate_preferences_csv(num_voters: int, num_candidates: int, filename: str) -> None:
     candidates = [chr(65 + i) for i in range(num_candidates)]  # Candidate labels A, B, C, ...
@@ -13,4 +15,10 @@ def generate_preferences_csv(num_voters: int, num_candidates: int, filename: str
         for preference in preferences:
             writer.writerow(preference)
 
-generate_preferences_csv(5, 3, "example.csv")
+def read_output(filename: str) -> dict:
+    with open(filename, 'r') as file:
+        return json.load(file)
+
+generate_preferences_csv(5, 3, "exp_preferences.csv")
+
+main.main(['plurality', 'voting_for_two', 'borda', 'anti_plurality'], "exp_preferences.csv", "exp_output.json")
