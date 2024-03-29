@@ -2,7 +2,7 @@ import sys
 from typing import List
 from tva_io import read_preferences, scheme_by_name, write_to_output
 from tva_types import Scheme
-from voting import  get_basic_tva_result, get_first_round_basic_tva_result
+from voting import  get_basic_tva_result
 
 def main(scheme_names: str, input_file: str, output_file: str, runoff_output_file: str = "runoff_output.json", runoff_election : int =0) -> None:
     preferences = read_preferences(input_file)
