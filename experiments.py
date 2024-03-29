@@ -59,11 +59,11 @@ def run_experiment(candidate_numbers, voter_numbers):
         avg_increase_data = []
         for num_candidates in candidate_numbers:
             # Generate preferences CSV
-            filename = f"exp_preferences_v{num_voters}_c{num_candidates}.csv"
+            filename = f"exp_preferences.csv"
             generate_preferences_csv(num_voters, num_candidates, filename)
 
             # Run analysis and read output
-            output_filename = f"exp_output_v{num_voters}_c{num_candidates}.json"
+            output_filename = f"exp_output.json"
             main.main(["plurality", "voting_for_two", "borda", "anti_plurality"], filename, output_filename)
             output = read_output(output_filename)
 
