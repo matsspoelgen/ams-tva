@@ -1,28 +1,165 @@
 {
     "plurality": {
-        "non_strategic_outcome": "C",
+        "non_strategic_outcome": "A",
         "non_strategic_happiness_levels": [
+            1,
+            0,
             2,
             1,
+            2,
+            2,
             1,
             2,
-            2
+            2,
+            0
         ],
-        "non_strategic_overall_happiness": 8,
+        "non_strategic_overall_happiness": 13,
         "voters": [
-            [],
+            [
+                {
+                    "modified_preference_list": [
+                        "A",
+                        "C",
+                        "B"
+                    ],
+                    "voting_outcome": "A",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "A",
+                        "B",
+                        "C"
+                    ],
+                    "voting_outcome": "A",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                }
+            ],
             [
                 {
                     "modified_preference_list": [
                         "C",
-                        "B",
-                        "A"
+                        "A",
+                        "B"
                     ],
-                    "voting_outcome": "C",
+                    "voting_outcome": "A",
+                    "voter_happiness": 1,
+                    "true_voter_happiness": 0,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "B",
+                        "A",
+                        "C"
+                    ],
+                    "voting_outcome": "A",
+                    "voter_happiness": 1,
+                    "true_voter_happiness": 0,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "A",
+                        "C",
+                        "B"
+                    ],
+                    "voting_outcome": "A",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 0,
+                    "overall_happiness": 15,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "A",
+                        "B",
+                        "C"
+                    ],
+                    "voting_outcome": "A",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 0,
+                    "overall_happiness": 15,
+                    "true_overall_happiness": 13
+                }
+            ],
+            [],
+            [
+                {
+                    "modified_preference_list": [
+                        "A",
+                        "C",
+                        "B"
+                    ],
+                    "voting_outcome": "A",
                     "voter_happiness": 2,
                     "true_voter_happiness": 1,
-                    "overall_happiness": 9,
-                    "true_overall_happiness": 8
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "A",
+                        "B",
+                        "C"
+                    ],
+                    "voting_outcome": "A",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                }
+            ],
+            [],
+            [],
+            [
+                {
+                    "modified_preference_list": [
+                        "A",
+                        "C",
+                        "B"
+                    ],
+                    "voting_outcome": "A",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "A",
+                        "B",
+                        "C"
+                    ],
+                    "voting_outcome": "A",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                }
+            ],
+            [],
+            [],
+            [
+                {
+                    "modified_preference_list": [
+                        "B",
+                        "A",
+                        "C"
+                    ],
+                    "voting_outcome": "A",
+                    "voter_happiness": 1,
+                    "true_voter_happiness": 0,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
                 },
                 {
                     "modified_preference_list": [
@@ -30,354 +167,355 @@
                         "A",
                         "B"
                     ],
-                    "voting_outcome": "C",
-                    "voter_happiness": 2,
-                    "true_voter_happiness": 1,
-                    "overall_happiness": 9,
-                    "true_overall_happiness": 8
-                }
-            ],
-            [
-                {
-                    "modified_preference_list": [
-                        "C",
-                        "B",
-                        "A"
-                    ],
-                    "voting_outcome": "C",
-                    "voter_happiness": 2,
-                    "true_voter_happiness": 1,
-                    "overall_happiness": 9,
-                    "true_overall_happiness": 8
+                    "voting_outcome": "A",
+                    "voter_happiness": 1,
+                    "true_voter_happiness": 0,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
                 },
                 {
                     "modified_preference_list": [
-                        "C",
                         "A",
+                        "B",
+                        "C"
+                    ],
+                    "voting_outcome": "A",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 0,
+                    "overall_happiness": 15,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "A",
+                        "C",
                         "B"
                     ],
-                    "voting_outcome": "C",
+                    "voting_outcome": "A",
                     "voter_happiness": 2,
-                    "true_voter_happiness": 1,
-                    "overall_happiness": 9,
-                    "true_overall_happiness": 8
+                    "true_voter_happiness": 0,
+                    "overall_happiness": 15,
+                    "true_overall_happiness": 13
                 }
-            ],
-            [],
-            []
+            ]
         ],
-        "strategic_voting_risk": 0.13333333333333333
+        "strategic_voting_risk": 0.23333333333333334
     },
     "voting_for_two": {
-        "non_strategic_outcome": "B",
-        "non_strategic_happiness_levels": [
-            1,
-            2,
-            2,
-            1,
-            1
-        ],
-        "non_strategic_overall_happiness": 7,
-        "voters": [
-            [
-                {
-                    "modified_preference_list": [
-                        "C",
-                        "A",
-                        "B"
-                    ],
-                    "voting_outcome": "C",
-                    "voter_happiness": 2,
-                    "true_voter_happiness": 1,
-                    "overall_happiness": 8,
-                    "true_overall_happiness": 7
-                },
-                {
-                    "modified_preference_list": [
-                        "B",
-                        "C",
-                        "A"
-                    ],
-                    "voting_outcome": "B",
-                    "voter_happiness": 2,
-                    "true_voter_happiness": 1,
-                    "overall_happiness": 8,
-                    "true_overall_happiness": 7
-                },
-                {
-                    "modified_preference_list": [
-                        "B",
-                        "A",
-                        "C"
-                    ],
-                    "voting_outcome": "B",
-                    "voter_happiness": 2,
-                    "true_voter_happiness": 1,
-                    "overall_happiness": 8,
-                    "true_overall_happiness": 7
-                }
-            ],
-            [],
-            [],
-            [
-                {
-                    "modified_preference_list": [
-                        "C",
-                        "A",
-                        "B"
-                    ],
-                    "voting_outcome": "C",
-                    "voter_happiness": 2,
-                    "true_voter_happiness": 1,
-                    "overall_happiness": 8,
-                    "true_overall_happiness": 7
-                },
-                {
-                    "modified_preference_list": [
-                        "B",
-                        "C",
-                        "A"
-                    ],
-                    "voting_outcome": "B",
-                    "voter_happiness": 2,
-                    "true_voter_happiness": 1,
-                    "overall_happiness": 8,
-                    "true_overall_happiness": 7
-                },
-                {
-                    "modified_preference_list": [
-                        "B",
-                        "A",
-                        "C"
-                    ],
-                    "voting_outcome": "B",
-                    "voter_happiness": 2,
-                    "true_voter_happiness": 1,
-                    "overall_happiness": 8,
-                    "true_overall_happiness": 7
-                }
-            ],
-            [
-                {
-                    "modified_preference_list": [
-                        "C",
-                        "A",
-                        "B"
-                    ],
-                    "voting_outcome": "C",
-                    "voter_happiness": 2,
-                    "true_voter_happiness": 1,
-                    "overall_happiness": 8,
-                    "true_overall_happiness": 7
-                },
-                {
-                    "modified_preference_list": [
-                        "B",
-                        "C",
-                        "A"
-                    ],
-                    "voting_outcome": "B",
-                    "voter_happiness": 2,
-                    "true_voter_happiness": 1,
-                    "overall_happiness": 8,
-                    "true_overall_happiness": 7
-                },
-                {
-                    "modified_preference_list": [
-                        "B",
-                        "A",
-                        "C"
-                    ],
-                    "voting_outcome": "B",
-                    "voter_happiness": 2,
-                    "true_voter_happiness": 1,
-                    "overall_happiness": 8,
-                    "true_overall_happiness": 7
-                }
-            ]
-        ],
-        "strategic_voting_risk": 0.3
-    },
-    "borda": {
         "non_strategic_outcome": "C",
         "non_strategic_happiness_levels": [
             2,
+            2,
+            1,
+            2,
             1,
             1,
             2,
-            2
-        ],
-        "non_strategic_overall_happiness": 8,
-        "voters": [
-            [],
-            [
-                {
-                    "modified_preference_list": [
-                        "B",
-                        "A",
-                        "C"
-                    ],
-                    "voting_outcome": "B",
-                    "voter_happiness": 2,
-                    "true_voter_happiness": 1,
-                    "overall_happiness": 7,
-                    "true_overall_happiness": 8
-                },
-                {
-                    "modified_preference_list": [
-                        "C",
-                        "B",
-                        "A"
-                    ],
-                    "voting_outcome": "C",
-                    "voter_happiness": 2,
-                    "true_voter_happiness": 1,
-                    "overall_happiness": 9,
-                    "true_overall_happiness": 8
-                },
-                {
-                    "modified_preference_list": [
-                        "C",
-                        "A",
-                        "B"
-                    ],
-                    "voting_outcome": "C",
-                    "voter_happiness": 2,
-                    "true_voter_happiness": 1,
-                    "overall_happiness": 9,
-                    "true_overall_happiness": 8
-                }
-            ],
-            [
-                {
-                    "modified_preference_list": [
-                        "B",
-                        "A",
-                        "C"
-                    ],
-                    "voting_outcome": "B",
-                    "voter_happiness": 2,
-                    "true_voter_happiness": 1,
-                    "overall_happiness": 7,
-                    "true_overall_happiness": 8
-                },
-                {
-                    "modified_preference_list": [
-                        "C",
-                        "B",
-                        "A"
-                    ],
-                    "voting_outcome": "C",
-                    "voter_happiness": 2,
-                    "true_voter_happiness": 1,
-                    "overall_happiness": 9,
-                    "true_overall_happiness": 8
-                },
-                {
-                    "modified_preference_list": [
-                        "C",
-                        "A",
-                        "B"
-                    ],
-                    "voting_outcome": "C",
-                    "voter_happiness": 2,
-                    "true_voter_happiness": 1,
-                    "overall_happiness": 9,
-                    "true_overall_happiness": 8
-                }
-            ],
-            [],
-            []
-        ],
-        "strategic_voting_risk": 0.2
-    },
-    "anti_plurality": {
-        "non_strategic_outcome": "B",
-        "non_strategic_happiness_levels": [
-            1,
-            2,
-            2,
+            0,
             1,
             1
         ],
-        "non_strategic_overall_happiness": 7,
+        "non_strategic_overall_happiness": 13,
+        "voters": [
+            [],
+            [],
+            [
+                {
+                    "modified_preference_list": [
+                        "A",
+                        "B",
+                        "C"
+                    ],
+                    "voting_outcome": "A",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 13,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "C",
+                        "A",
+                        "B"
+                    ],
+                    "voting_outcome": "C",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "C",
+                        "B",
+                        "A"
+                    ],
+                    "voting_outcome": "C",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                }
+            ],
+            [],
+            [
+                {
+                    "modified_preference_list": [
+                        "A",
+                        "B",
+                        "C"
+                    ],
+                    "voting_outcome": "A",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 13,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "C",
+                        "A",
+                        "B"
+                    ],
+                    "voting_outcome": "C",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "C",
+                        "B",
+                        "A"
+                    ],
+                    "voting_outcome": "C",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                }
+            ],
+            [
+                {
+                    "modified_preference_list": [
+                        "A",
+                        "B",
+                        "C"
+                    ],
+                    "voting_outcome": "A",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 13,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "C",
+                        "A",
+                        "B"
+                    ],
+                    "voting_outcome": "C",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "C",
+                        "B",
+                        "A"
+                    ],
+                    "voting_outcome": "C",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                }
+            ],
+            [],
+            [
+                {
+                    "modified_preference_list": [
+                        "A",
+                        "C",
+                        "B"
+                    ],
+                    "voting_outcome": "C",
+                    "voter_happiness": 1,
+                    "true_voter_happiness": 0,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "B",
+                        "C",
+                        "A"
+                    ],
+                    "voting_outcome": "C",
+                    "voter_happiness": 1,
+                    "true_voter_happiness": 0,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "C",
+                        "A",
+                        "B"
+                    ],
+                    "voting_outcome": "C",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 0,
+                    "overall_happiness": 15,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "C",
+                        "B",
+                        "A"
+                    ],
+                    "voting_outcome": "C",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 0,
+                    "overall_happiness": 15,
+                    "true_overall_happiness": 13
+                }
+            ],
+            [
+                {
+                    "modified_preference_list": [
+                        "A",
+                        "B",
+                        "C"
+                    ],
+                    "voting_outcome": "A",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 13,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "C",
+                        "A",
+                        "B"
+                    ],
+                    "voting_outcome": "C",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "C",
+                        "B",
+                        "A"
+                    ],
+                    "voting_outcome": "C",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                }
+            ],
+            [
+                {
+                    "modified_preference_list": [
+                        "C",
+                        "B",
+                        "A"
+                    ],
+                    "voting_outcome": "C",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "A",
+                        "B",
+                        "C"
+                    ],
+                    "voting_outcome": "A",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 15,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "A",
+                        "C",
+                        "B"
+                    ],
+                    "voting_outcome": "A",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 15,
+                    "true_overall_happiness": 13
+                }
+            ]
+        ],
+        "strategic_voting_risk": 0.31666666666666665
+    },
+    "borda": {
+        "non_strategic_outcome": "A",
+        "non_strategic_happiness_levels": [
+            1,
+            0,
+            2,
+            1,
+            2,
+            2,
+            1,
+            2,
+            2,
+            0
+        ],
+        "non_strategic_overall_happiness": 13,
         "voters": [
             [
                 {
                     "modified_preference_list": [
                         "C",
-                        "A",
-                        "B"
+                        "B",
+                        "A"
                     ],
                     "voting_outcome": "C",
                     "voter_happiness": 2,
                     "true_voter_happiness": 1,
-                    "overall_happiness": 8,
-                    "true_overall_happiness": 7
+                    "overall_happiness": 13,
+                    "true_overall_happiness": 13
                 },
                 {
                     "modified_preference_list": [
-                        "B",
-                        "C",
-                        "A"
-                    ],
-                    "voting_outcome": "B",
-                    "voter_happiness": 2,
-                    "true_voter_happiness": 1,
-                    "overall_happiness": 8,
-                    "true_overall_happiness": 7
-                },
-                {
-                    "modified_preference_list": [
-                        "B",
                         "A",
-                        "C"
-                    ],
-                    "voting_outcome": "B",
-                    "voter_happiness": 2,
-                    "true_voter_happiness": 1,
-                    "overall_happiness": 8,
-                    "true_overall_happiness": 7
-                }
-            ],
-            [],
-            [],
-            [
-                {
-                    "modified_preference_list": [
                         "C",
-                        "A",
                         "B"
                     ],
-                    "voting_outcome": "C",
+                    "voting_outcome": "A",
                     "voter_happiness": 2,
                     "true_voter_happiness": 1,
-                    "overall_happiness": 8,
-                    "true_overall_happiness": 7
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
                 },
                 {
                     "modified_preference_list": [
-                        "B",
-                        "C",
-                        "A"
-                    ],
-                    "voting_outcome": "B",
-                    "voter_happiness": 2,
-                    "true_voter_happiness": 1,
-                    "overall_happiness": 8,
-                    "true_overall_happiness": 7
-                },
-                {
-                    "modified_preference_list": [
-                        "B",
                         "A",
+                        "B",
                         "C"
                     ],
-                    "voting_outcome": "B",
+                    "voting_outcome": "A",
                     "voter_happiness": 2,
                     "true_voter_happiness": 1,
-                    "overall_happiness": 8,
-                    "true_overall_happiness": 7
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
                 }
             ],
             [
@@ -387,23 +525,11 @@
                         "A",
                         "B"
                     ],
-                    "voting_outcome": "C",
-                    "voter_happiness": 2,
-                    "true_voter_happiness": 1,
-                    "overall_happiness": 8,
-                    "true_overall_happiness": 7
-                },
-                {
-                    "modified_preference_list": [
-                        "B",
-                        "C",
-                        "A"
-                    ],
-                    "voting_outcome": "B",
-                    "voter_happiness": 2,
-                    "true_voter_happiness": 1,
-                    "overall_happiness": 8,
-                    "true_overall_happiness": 7
+                    "voting_outcome": "A",
+                    "voter_happiness": 1,
+                    "true_voter_happiness": 0,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
                 },
                 {
                     "modified_preference_list": [
@@ -411,14 +537,444 @@
                         "A",
                         "C"
                     ],
-                    "voting_outcome": "B",
+                    "voting_outcome": "A",
+                    "voter_happiness": 1,
+                    "true_voter_happiness": 0,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "A",
+                        "C",
+                        "B"
+                    ],
+                    "voting_outcome": "A",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 0,
+                    "overall_happiness": 15,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "A",
+                        "B",
+                        "C"
+                    ],
+                    "voting_outcome": "A",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 0,
+                    "overall_happiness": 15,
+                    "true_overall_happiness": 13
+                }
+            ],
+            [],
+            [
+                {
+                    "modified_preference_list": [
+                        "C",
+                        "B",
+                        "A"
+                    ],
+                    "voting_outcome": "C",
                     "voter_happiness": 2,
                     "true_voter_happiness": 1,
-                    "overall_happiness": 8,
-                    "true_overall_happiness": 7
+                    "overall_happiness": 13,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "A",
+                        "C",
+                        "B"
+                    ],
+                    "voting_outcome": "A",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "A",
+                        "B",
+                        "C"
+                    ],
+                    "voting_outcome": "A",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                }
+            ],
+            [],
+            [],
+            [
+                {
+                    "modified_preference_list": [
+                        "C",
+                        "B",
+                        "A"
+                    ],
+                    "voting_outcome": "C",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 13,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "A",
+                        "C",
+                        "B"
+                    ],
+                    "voting_outcome": "A",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "A",
+                        "B",
+                        "C"
+                    ],
+                    "voting_outcome": "A",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                }
+            ],
+            [],
+            [],
+            [
+                {
+                    "modified_preference_list": [
+                        "B",
+                        "A",
+                        "C"
+                    ],
+                    "voting_outcome": "A",
+                    "voter_happiness": 1,
+                    "true_voter_happiness": 0,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "C",
+                        "B",
+                        "A"
+                    ],
+                    "voting_outcome": "C",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 0,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "C",
+                        "A",
+                        "B"
+                    ],
+                    "voting_outcome": "A",
+                    "voter_happiness": 1,
+                    "true_voter_happiness": 0,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "A",
+                        "B",
+                        "C"
+                    ],
+                    "voting_outcome": "A",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 0,
+                    "overall_happiness": 15,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "A",
+                        "C",
+                        "B"
+                    ],
+                    "voting_outcome": "A",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 0,
+                    "overall_happiness": 15,
+                    "true_overall_happiness": 13
                 }
             ]
         ],
         "strategic_voting_risk": 0.3
+    },
+    "anti_plurality": {
+        "non_strategic_outcome": "C",
+        "non_strategic_happiness_levels": [
+            2,
+            2,
+            1,
+            2,
+            1,
+            1,
+            2,
+            0,
+            1,
+            1
+        ],
+        "non_strategic_overall_happiness": 13,
+        "voters": [
+            [],
+            [],
+            [
+                {
+                    "modified_preference_list": [
+                        "A",
+                        "B",
+                        "C"
+                    ],
+                    "voting_outcome": "A",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 13,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "C",
+                        "A",
+                        "B"
+                    ],
+                    "voting_outcome": "C",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "C",
+                        "B",
+                        "A"
+                    ],
+                    "voting_outcome": "C",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                }
+            ],
+            [],
+            [
+                {
+                    "modified_preference_list": [
+                        "A",
+                        "B",
+                        "C"
+                    ],
+                    "voting_outcome": "A",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 13,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "C",
+                        "A",
+                        "B"
+                    ],
+                    "voting_outcome": "C",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "C",
+                        "B",
+                        "A"
+                    ],
+                    "voting_outcome": "C",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                }
+            ],
+            [
+                {
+                    "modified_preference_list": [
+                        "A",
+                        "B",
+                        "C"
+                    ],
+                    "voting_outcome": "A",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 13,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "C",
+                        "A",
+                        "B"
+                    ],
+                    "voting_outcome": "C",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "C",
+                        "B",
+                        "A"
+                    ],
+                    "voting_outcome": "C",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                }
+            ],
+            [],
+            [
+                {
+                    "modified_preference_list": [
+                        "A",
+                        "C",
+                        "B"
+                    ],
+                    "voting_outcome": "C",
+                    "voter_happiness": 1,
+                    "true_voter_happiness": 0,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "B",
+                        "C",
+                        "A"
+                    ],
+                    "voting_outcome": "C",
+                    "voter_happiness": 1,
+                    "true_voter_happiness": 0,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "C",
+                        "A",
+                        "B"
+                    ],
+                    "voting_outcome": "C",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 0,
+                    "overall_happiness": 15,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "C",
+                        "B",
+                        "A"
+                    ],
+                    "voting_outcome": "C",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 0,
+                    "overall_happiness": 15,
+                    "true_overall_happiness": 13
+                }
+            ],
+            [
+                {
+                    "modified_preference_list": [
+                        "A",
+                        "B",
+                        "C"
+                    ],
+                    "voting_outcome": "A",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 13,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "C",
+                        "A",
+                        "B"
+                    ],
+                    "voting_outcome": "C",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "C",
+                        "B",
+                        "A"
+                    ],
+                    "voting_outcome": "C",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                }
+            ],
+            [
+                {
+                    "modified_preference_list": [
+                        "C",
+                        "B",
+                        "A"
+                    ],
+                    "voting_outcome": "C",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 14,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "A",
+                        "B",
+                        "C"
+                    ],
+                    "voting_outcome": "A",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 15,
+                    "true_overall_happiness": 13
+                },
+                {
+                    "modified_preference_list": [
+                        "A",
+                        "C",
+                        "B"
+                    ],
+                    "voting_outcome": "A",
+                    "voter_happiness": 2,
+                    "true_voter_happiness": 1,
+                    "overall_happiness": 15,
+                    "true_overall_happiness": 13
+                }
+            ]
+        ],
+        "strategic_voting_risk": 0.31666666666666665
     }
 }
