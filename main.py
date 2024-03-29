@@ -2,7 +2,7 @@ import sys
 from typing import List
 from tva_io import read_preferences, scheme_by_name, write_to_output
 from tva_types import Scheme
-from voting import  get_basic_tva_result, get_first_round_basic_tva_result
+from voting import  get_basic_tva_result
 
 def main(scheme_names: str, input_file: str, output_file: str, runoff_output_file: str = "runoff_output.json", runoff_election : int =0) -> None:
     preferences = read_preferences(input_file)
@@ -19,7 +19,6 @@ def main(scheme_names: str, input_file: str, output_file: str, runoff_output_fil
 
     original_preferences = preferences.copy()
     # if runoff_election > 1:
-    #     result = ["B", "C"]
     #     basic_tva_result, result = get_first_round_basic_tva_result(preferences, schemes, runoff=runoff_election)
     #     write_to_output(basic_tva_result, runoff_output_file)
     #     for pref in preferences:
@@ -30,7 +29,10 @@ def main(scheme_names: str, input_file: str, output_file: str, runoff_output_fil
     #         preferences[preferences.index(pref)] = temp
 
     #Performs tva for non strategic first round
-    basic_tva_result = get_basic_tva_result(preferences, schemes, real_prefs=original_preferences)
+    if runoff_election > 0:
+        basic_tva_result = get_basic_tva_result(preferences, schemes, real_prefs=original_preferences)
+    else:
+        basic_tva_result = get_basic_tva_result(preferences, schemes)
     write_to_output(basic_tva_result, output_file)
 
 if __name__ == "__main__":
