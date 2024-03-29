@@ -23,7 +23,7 @@ def alternate_happiness(preferences, outcome, variant, acceptance=1, happiness_r
     elif variant == 1: #Full happiness when outcome in first n else zero
         for pref in preferences:
             if outcome in pref[0:acceptance]:
-                happiness_level = (len(pref) - 1) ** 2
+                happiness_level = len(pref) - 1
             else:
                 happiness_level = 0
             happiness_levels.append(happiness_level)
@@ -54,14 +54,20 @@ def alternate_happiness(preferences, outcome, variant, acceptance=1, happiness_r
             happiness_levels.append(happiness_level)
     return happiness_levels
 
-def get_vote_result(preferences: SystemPreferences, scheme: Scheme) -> tuple[str, List[float]]:
+
+def get_vote_result(preferences: SystemPreferences, scheme: Scheme, real_prefs: SystemPreferences = [], get_full_outcome: bool = False) -> tuple[str, List[float]]:
     """ Calculate the outcome and happiness levels for a given voting scheme and set of preferences. """
 
-    outcome = scheme(preferences)
-    happiness_levels = happiness(preferences, outcome)
+    outcome , full_outcome= scheme(preferences)
+    if real_prefs:
+        happiness_levels = happiness(real_prefs, outcome)
+    else:
+        happiness_levels = happiness(preferences, outcome)
+    if get_full_outcome:
+        return outcome, happiness_levels, full_outcome
     return outcome, happiness_levels
 
-def get_strategic_options_for_voter(system_preferences: SystemPreferences, voter_index: int, scheme: Scheme) -> List[VotingOption]:
+def get_strategic_options_for_voter(system_preferences: SystemPreferences, voter_index: int, scheme: Scheme, real_prefs: SystemPreferences = []) -> List[VotingOption]:
     """ Find strategic voting options for a given voter and voting scheme. """
 
     voter_original_prefs = system_preferences[voter_index]
@@ -74,7 +80,7 @@ def get_strategic_options_for_voter(system_preferences: SystemPreferences, voter
         system_preferences[voter_index] = voter_prefs
 
         # Calculate results for the current permutation
-        outcome, happiness_levels = get_vote_result(system_preferences, scheme)
+        outcome, happiness_levels = get_vote_result(system_preferences, scheme, real_prefs)
         voter_happiness = happiness_levels[voter_index]
         overall_happiness: float = sum(happiness_levels)
 
@@ -93,14 +99,54 @@ def get_strategic_options_for_voter(system_preferences: SystemPreferences, voter
     system_preferences[voter_index] = voter_original_prefs
     return strategic_voting_options
 
-def get_basic_tva_result(system_preferences: SystemPreferences, scheme: Scheme) -> dict:
+
+def get_strategic_first_round_options_for_voter(system_preferences: SystemPreferences, voter_index: int, scheme: Scheme, full_outcome: list[str], runoff: int, real_prefs: SystemPreferences = []) -> List[VotingOption]:
+    """ Find strategic voting options for a given voter and voting scheme. """
+
+    voter_original_prefs = system_preferences[voter_index]
+    voter_pref_permutations = list(permutations(voter_original_prefs))
+    strategic_voting_options: List[VotingOption] = []
+    suboptimal_strategic_voting_options: List[VotingOption] = []
+
+    # Iterate through all permutations of the voter's preferences
+    for i, permutation in enumerate(voter_pref_permutations):
+        voter_prefs = list(permutation)
+        system_preferences[voter_index] = voter_prefs
+
+        # Calculate results for the current permutation
+        outcome, happiness_levels, new_full_outcome = get_vote_result(system_preferences, scheme, real_prefs, True)
+        voter_happiness = alternate_happiness(system_preferences, outcome, 1, runoff)
+        overall_happiness: float = sum(happiness_levels)
+
+        if i == 0: # Remebmer the first (original) permutation's results
+            true_voter_happiness = voter_happiness
+            true_overall_happiness = overall_happiness
+
+        # print(f"Permutation {i+1}: Outcome: {outcome}, Happiness levels: {happiness_levels}")
+
+        # Store optimal strategic voting options which have a less strong opponent and also the suboptimal options
+        is_strategic = voter_happiness > true_voter_happiness
+        if is_strategic:
+            suboptimal_strategic_voting_options.append(VotingOption(voter_prefs, outcome, happiness_levels[voter_index], overall_happiness, true_overall_happiness))
+        if is_strategic and new_full_outcome[1] not in full_outcome[:2]:
+            strategic_voting_options.append(VotingOption(voter_prefs, outcome, happiness_levels[voter_index], overall_happiness, true_overall_happiness))
+
+
+    # If no strategic options were found, return the suboptimal options
+    if not strategic_voting_options:
+        strategic_voting_options = suboptimal_strategic_voting_options.copy()
+    # Restore the original preferences
+    system_preferences[voter_index] = voter_original_prefs
+    return strategic_voting_options
+
+def get_basic_tva_result(system_preferences: SystemPreferences, scheme: Scheme, real_prefs: SystemPreferences = []) -> dict:
     """ Calculate the basic TVA result for a given voting scheme and set of preferences. """
 
     num_voters = len(system_preferences)
     num_candidates = len(system_preferences[0])
 
     basic_tva_result = {}
-    non_strategic_outcome, non_strategic_happiness_levels = get_vote_result(system_preferences, scheme)
+    non_strategic_outcome, non_strategic_happiness_levels = get_vote_result(system_preferences, scheme, real_prefs)
 
     basic_tva_result["non_strategic_outcome"] = non_strategic_outcome
     basic_tva_result["non_strategic_happiness_levels"] = non_strategic_happiness_levels
@@ -109,13 +155,39 @@ def get_basic_tva_result(system_preferences: SystemPreferences, scheme: Scheme) 
 
     num_strategic_options = 0
     for voter_index in range(num_voters):
-        strategic_voting_options = get_strategic_options_for_voter(system_preferences, voter_index, scheme)
+        strategic_voting_options = get_strategic_options_for_voter(system_preferences, voter_index, scheme, real_prefs)
         num_strategic_options += len(strategic_voting_options)
         basic_tva_result["voters"].append(strategic_voting_options)
 
     basic_tva_result["strategic_voting_risk"] = get_strategic_voting_risk(num_strategic_options, num_voters, num_candidates)
 
     return basic_tva_result
+
+
+def get_first_round_basic_tva_result(system_preferences: SystemPreferences, scheme: Scheme, runoff: int = 2, real_prefs: SystemPreferences = []) -> tuple[dict, list]:
+    """ Calculate the basic TVA result for a given voting scheme and set of preferences. """
+
+    num_voters = len(system_preferences)
+    num_candidates = len(system_preferences[0])
+
+    basic_tva_result = {}
+    non_strategic_outcome, non_strategic_happiness_levels, non_strategic_full_outcome = get_vote_result(system_preferences, scheme, real_prefs, True)
+
+    basic_tva_result["non_strategic_outcome"] = non_strategic_outcome
+    basic_tva_result["non_strategic_happiness_levels"] = non_strategic_happiness_levels
+    basic_tva_result["voters"] = []
+
+    num_strategic_options = 0
+
+    for voter_index in range(num_voters):
+        strategic_voting_options = get_strategic_first_round_options_for_voter(system_preferences, voter_index, scheme, non_strategic_full_outcome, runoff, real_prefs)
+        num_strategic_options += len(strategic_voting_options)
+
+        basic_tva_result["voters"].append(strategic_voting_options)
+
+    basic_tva_result["strategic_voting_risk"] = get_strategic_voting_risk(num_strategic_options, num_voters, num_candidates)
+
+    return basic_tva_result, non_strategic_full_outcome[:runoff]
 
 def get_strategic_voting_risk(num_strategic_options: int, num_voters: int, num_candidates: int) -> float:
     """ Ratio of strategic voting options to the total number of options. """
