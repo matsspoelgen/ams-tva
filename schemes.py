@@ -1,4 +1,5 @@
 from collections import Counter
+from typing import List
 
 from tva_types import SystemPreferences
 
@@ -7,20 +8,14 @@ def plurality(preferences: SystemPreferences) -> tuple[str, list[str]]:
     votes = [pref[0] for pref in preferences]
     outcome = Counter(votes).most_common()
     outcome.sort(key=lambda x: (-x[1], x[0]))
-    full_outcome = []
-    for candidate in outcome:
-        full_outcome.append(candidate[0])
-    for candidate in preferences[0]:
-        if candidate not in full_outcome:
-            full_outcome.append(candidate)
-    return outcome[0][0], full_outcome
+    return outcome[0][0], get_outcome_order(outcome, preferences[0])
 
 def voting_for_two(preferences: SystemPreferences) -> tuple[str, list[str]]:
     """ Return winner based on the Voting-for-Two scheme. """
     votes = [pref[0] for pref in preferences] + [pref[1] for pref in preferences]
     outcome = Counter(votes).most_common()
     outcome.sort(key=lambda x: (-x[1], x[0]))
-    return outcome[0][0], []
+    return outcome[0][0], get_outcome_order(outcome, preferences[0])
 
 def anti_plurality(preferences: SystemPreferences) -> tuple[str, list[str]]:
     """ Return winner based on the Anti-Plurality voting scheme. """
@@ -35,7 +30,7 @@ def anti_plurality(preferences: SystemPreferences) -> tuple[str, list[str]]:
         scores[candidate] = total_votes - last_place_votes.get(candidate, 0)
 
     outcome = sorted(scores.items(), key=lambda x: (-x[1], x[0]))
-    return outcome[0][0], []
+    return outcome[0][0], get_outcome_order(outcome, preferences[0])
 
 def borda(preferences: SystemPreferences) -> tuple[str, list[str]]:
     """ Return winner based on the Borda voting scheme. """
@@ -46,4 +41,14 @@ def borda(preferences: SystemPreferences) -> tuple[str, list[str]]:
             # Assign points based on the position in the preference list
             scores[candidate] += len(candidates) - i - 1
     outcome = sorted(scores.items(), key=lambda x: (-x[1], x[0]))
-    return outcome[0][0], []
+    return outcome[0][0], get_outcome_order(outcome, preferences[0])
+
+def get_outcome_order(outcome: dict, candidates: List[str]) -> list[str]:
+    """ Return the candidates in the order they appear in the outcome. """
+    outcome_order = []
+    for candidate in outcome:
+        outcome_order.append(candidate[0])
+    for candidate in candidates:
+        if candidate not in outcome_order:
+            outcome_order.append(candidate)
+    return outcome_order
