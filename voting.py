@@ -87,7 +87,7 @@ def get_strategic_options_for_voter(system_preferences: SystemPreferences, voter
         # Store strategic voting options
         is_strategic = voter_happiness > true_voter_happiness
         if is_strategic:
-            strategic_voting_options.append(VotingOption(voter_prefs, outcome, happiness_levels[voter_index], overall_happiness, true_overall_happiness))
+            strategic_voting_options.append(VotingOption(voter_prefs, outcome, voter_happiness, true_voter_happiness, overall_happiness, true_overall_happiness))
 
     # Restore the original preferences
     system_preferences[voter_index] = voter_original_prefs
@@ -104,6 +104,7 @@ def get_basic_tva_result(system_preferences: SystemPreferences, scheme: Scheme) 
 
     basic_tva_result["non_strategic_outcome"] = non_strategic_outcome
     basic_tva_result["non_strategic_happiness_levels"] = non_strategic_happiness_levels
+    basic_tva_result["non_strategic_overall_happiness"] = sum(non_strategic_happiness_levels)
     basic_tva_result["voters"] = []
 
     num_strategic_options = 0
