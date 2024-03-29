@@ -8,10 +8,6 @@ from tva_types import Scheme
 def read_preferences(filename):
     input_df = pd.read_csv(filename, header=None)
 
-    # first row contains the voting scheme
-    scheme_name = input_df.iloc[0, 0]
-    input_df.drop(0, inplace=True)
-
     input_df = input_df.transpose()
     removed_voters = []
 
@@ -26,7 +22,7 @@ def read_preferences(filename):
     if removed_voters:
         print("Discarded invalid voters:", removed_voters)
 
-    return scheme_name, input_df.values.tolist()
+    return input_df.values.tolist()
 
 def scheme_by_name(scheme_name) -> Scheme:
     schemes = {

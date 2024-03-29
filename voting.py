@@ -139,27 +139,30 @@ def get_strategic_first_round_options_for_voter(system_preferences: SystemPrefer
     system_preferences[voter_index] = voter_original_prefs
     return strategic_voting_options
 
-def get_basic_tva_result(system_preferences: SystemPreferences, scheme: Scheme, real_prefs: SystemPreferences = []) -> dict:
+def get_basic_tva_result(system_preferences: SystemPreferences, schemes, real_prefs: SystemPreferences = []) -> dict:
     """ Calculate the basic TVA result for a given voting scheme and set of preferences. """
 
     num_voters = len(system_preferences)
     num_candidates = len(system_preferences[0])
 
     basic_tva_result = {}
-    non_strategic_outcome, non_strategic_happiness_levels = get_vote_result(system_preferences, scheme, real_prefs)
+    for scheme_name, scheme in schemes.items():
+        non_strategic_outcome, non_strategic_happiness_levels = get_vote_result(system_preferences, scheme, real_prefs)
 
-    basic_tva_result["non_strategic_outcome"] = non_strategic_outcome
-    basic_tva_result["non_strategic_happiness_levels"] = non_strategic_happiness_levels
-    basic_tva_result["non_strategic_overall_happiness"] = sum(non_strategic_happiness_levels)
-    basic_tva_result["voters"] = []
+        scheme_result = {}
+        scheme_result["non_strategic_outcome"] = non_strategic_outcome
+        scheme_result["non_strategic_happiness_levels"] = non_strategic_happiness_levels
+        scheme_result["non_strategic_overall_happiness"] = sum(non_strategic_happiness_levels)
+        scheme_result["voters"] = []
 
-    num_strategic_options = 0
-    for voter_index in range(num_voters):
-        strategic_voting_options = get_strategic_options_for_voter(system_preferences, voter_index, scheme, real_prefs)
-        num_strategic_options += len(strategic_voting_options)
-        basic_tva_result["voters"].append(strategic_voting_options)
+        num_strategic_options = 0
+        for voter_index in range(num_voters):
+            strategic_voting_options = get_strategic_options_for_voter(system_preferences, voter_index, scheme, real_prefs)
+            num_strategic_options += len(strategic_voting_options)
+            scheme_result["voters"].append(strategic_voting_options)
 
-    basic_tva_result["strategic_voting_risk"] = get_strategic_voting_risk(num_strategic_options, num_voters, num_candidates)
+        scheme_result["strategic_voting_risk"] = get_strategic_voting_risk(num_strategic_options, num_voters, num_candidates)
+        basic_tva_result[scheme_name] = scheme_result
 
     return basic_tva_result
 
