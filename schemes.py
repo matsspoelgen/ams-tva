@@ -1,7 +1,8 @@
 from collections import Counter
-from typing import List
+from typing import List, Dict
 
-from tva_types import SystemPreferences
+from tva_types import SystemPreferences, Scheme
+
 
 def plurality(preferences: SystemPreferences) -> tuple[str, list[str]]:
     """ Return winner based on the Plurality voting scheme. """

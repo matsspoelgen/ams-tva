@@ -130,7 +130,7 @@ def get_basic_tva_result(system_preferences: SystemPreferences, schemes: Dict[st
         scheme_result = {}
         scheme_result["non_strategic_outcome"] = non_strategic_outcome
         scheme_result["non_strategic_happiness_levels"] = non_strategic_happiness_levels
-        scheme_result["non_strategic_overall_happiness"] = sum(non_strategic_happiness_levels)
+        scheme_result["non_strategic_overall_happiness"] = sum(non_strategic_happiness_levels)/num_voters
         scheme_result["voters"] = []
 
         num_strategic_options = 0
