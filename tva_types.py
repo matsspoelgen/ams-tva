@@ -1,4 +1,4 @@
-from typing import Callable, List
+from typing import Callable, Dict, List
 
 VoterPreferences = List[str]
 """ Candidates in order of preference. """
@@ -28,3 +28,15 @@ class VotingOption:
         self.true_voter_happiness: float = true_voter_happiness  # 𝐻𝑖
         self.overall_happiness: float = overall_happiness  # 𝐻̃
         self.true_overall_happiness: float = true_overall_happiness  # 𝐻
+
+class VoteProps:
+    """ Properties of a vote.
+    
+    Attributes:
+        scheme_names:       Names of the voting schemes
+        colluding_groups:   Groups of colluding voters
+    """
+
+    def __init__(self, schemes: Dict[str, Scheme] = {}, colluding_groups: List[List[int]] = []):
+        self.schemes = schemes
+        self.colluding_groups = colluding_groups
