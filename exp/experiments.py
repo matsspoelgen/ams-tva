@@ -64,11 +64,11 @@ def run_experiment(candidate_numbers, voter_numbers, schemes: Dict[str, Scheme])
         avg_increase_data = []
         for num_candidates in candidate_numbers:
             # Generate preferences CSV
-            filename = f"exp_preferences.csv"
+            filename = f"exp/exp_preferences.csv"
             generate_preferences_csv(num_voters, num_candidates, filename)
 
             # Run analysis and read output
-            output_filename = f"exp_output.json"
+            output_filename = f"exp/exp_output.json"
             main.main(schemes, [[]],filename, output_filename)
             output = read_output(output_filename)
 
@@ -114,7 +114,7 @@ def plot_combined_metrics(candidate_numbers, results):
     plt.show()
 
 
-generate_preferences_csv(10, 3, "exp_preferences.csv")
+generate_preferences_csv(10, 3, "exp/exp_preferences.csv")
 scheme_names = ["plurality", "voting_for_two", "borda", "anti_plurality"]
 collusion_groups = [[0, 3],[2],[1],[4]]
 
@@ -129,14 +129,14 @@ for scheme_name in scheme_names:
     schemes[scheme_name] = scheme
 print("Voting schemes:", scheme_names)
 
-main.main(schemes, [[0, 3],[2],[1],[4]],"exp_preferences.csv", "exp_output.json")
-print(get_happiness_by_scheme(read_output("exp_output.json"), "plurality"))
-print(get_risk_by_scheme(read_output("exp_output.json"), "plurality"))
-print(calculate_average_happiness_increase_by_scheme(read_output("exp_output.json"), "plurality"))
-plot_strategic_voting_risk(read_output("exp_output.json"))
+#main.main(schemes, [[0, 3],[2],[1],[4]],"exp_preferences.csv", "exp_output.json")
+#print(get_happiness_by_scheme(read_output("exp_output.json"), "plurality"))
+#print(get_risk_by_scheme(read_output("exp_output.json"), "plurality"))
+#print(calculate_average_happiness_increase_by_scheme(read_output("exp_output.json"), "plurality"))
+#plot_strategic_voting_risk(read_output("exp_output.json"))
 
 candidate_numbers = [4]  # Range of candidate numbers to test
-voter_numbers = [10, 20, 50, 100]  # Range of voter numbers to test
+voter_numbers = [10, 20, 50, 100, 200]  # Range of voter numbers to test
 
 results = run_experiment(candidate_numbers, voter_numbers, schemes)
 plot_combined_metrics(candidate_numbers, results)
