@@ -58,10 +58,8 @@ def get_vote_result(preferences: SystemPreferences, scheme: Scheme, real_prefs: 
     """ Calculate the outcome and happiness levels for a given voting scheme and set of preferences. """
 
     outcome , full_outcome= scheme(preferences)
-    if real_prefs:
-        happiness_levels = happiness(real_prefs, outcome)
-    else:
-        happiness_levels = happiness(preferences, outcome)
+    happiness_levels = happiness(real_prefs if real_prefs else preferences, outcome)
+
     if get_full_outcome:
         return outcome, happiness_levels, full_outcome
     return outcome, happiness_levels
@@ -107,6 +105,10 @@ def get_strategic_options_for_voter(system_preferences: SystemPreferences, voter
                 strategic_voting_options.append(voting_option)
         else:
             strategic_voting_options.append(voting_option)
+
+    # If no strategic options were found, return the suboptimal options
+    if not strategic_voting_options:
+        strategic_voting_options = suboptimal_strategic_voting_options.copy()
 
     # Restore the original preferences
     system_preferences[voter_index] = voter_original_prefs

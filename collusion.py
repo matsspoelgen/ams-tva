@@ -12,7 +12,7 @@ def get_strategic_options_for_group(system_preferences: SystemPreferences, schem
     return get_strategic_options_for_group_rek(system_preferences, true_happiness_levels, scheme, collusion_group, 0)
 
 
-def get_strategic_options_for_group_rek(system_preferences: SystemPreferences, true_happiness_levels: List[float], scheme: Scheme, collusion_group: List[int], depth: int) -> List[VotingOption]:
+def get_strategic_options_for_group_rek(system_preferences: SystemPreferences, true_happiness_levels: List[float], scheme: Scheme, collusion_group: List[int], depth: int, full_outcome: list[str] = [], runoff: int = 0, real_prefs: SystemPreferences = []) -> List[VotingOption]:
 
     # the next voter is always first in the list
     voter_index = collusion_group[depth]
@@ -48,7 +48,7 @@ def get_strategic_options_for_group_rek(system_preferences: SystemPreferences, t
             strategic_voting_options.append([VotingOption(voter_prefs, outcome, happiness_levels[voter_index], true_happiness_levels[voter_index], group_happiness, true_group_happiness) for voter_index in collusion_group])
         else:
             # recursively call the function for the next voter in the collusion group
-            strategic_voting_options.extend(get_strategic_options_for_group_rek(system_preferences, true_happiness_levels, scheme, collusion_group, depth + 1))
+            strategic_voting_options.extend(get_strategic_options_for_group_rek(system_preferences, true_happiness_levels, scheme, collusion_group, depth + 1, full_outcome, runoff, real_prefs))
 
     # restore the original preferences
     system_preferences[voter_index] = voter_original_prefs

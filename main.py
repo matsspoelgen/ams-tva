@@ -6,7 +6,7 @@ from tva_io import read_preferences, scheme_by_name, write_to_output
 from tva_types import Scheme, VoteProps
 from voting import get_basic_tva_result
 
-def main(schemes: Dict[str, Scheme], collusion_groups: List[List[int]], input_file: str, output_file: str, runoff_output_file: str = "runoff_output.json", runoff_election : int =0) -> None:
+def main(schemes: Dict[str, Scheme], collusion_groups: List[List[int]], input_file: str, output_file: str, runoff_output_file: str = "runoff_output.json", runoff_election : int = 0) -> None:
     preferences = read_preferences(input_file)
 
     original_preferences = preferences.copy()
