@@ -24,9 +24,10 @@ def main(schemes: Dict[str, Scheme], collusion_groups: List[List[int]], input_fi
     if runoff_election > 0:
         basic_tva_result = get_basic_tva_result(preferences, schemes, real_prefs=original_preferences)
     else:
-        basic_tva_result = get_basic_tva_result(preferences, schemes)
+        basic_tva_result = get_basic_tva_result(preferences, schemes, real_prefs=original_preferences)
     write_to_output(basic_tva_result, output_file)
 
+    #TODO: fix happiness calculation for collusion
     #collusion tva
     # collusion_tva_result = get_collusion_tva_result(preferences, schemes, collusion_groups)
     # write_to_output(collusion_tva_result, output_file)
