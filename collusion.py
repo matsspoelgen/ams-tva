@@ -73,12 +73,12 @@ def get_collusion_tva_result(original_system_prefs: SystemPreferences, schemes: 
         scheme_result["non_strategic_overall_happiness"] = sum(non_strategic_happiness_levels)
         scheme_result["voters"] = []
 
-        num_strategic_options = 0
+        num_strategic_voters = 0
         strategic_options_dict: Dict[int, List[VotingOption]] = {}
         for group_index in range(num_groups):
             collusion_group = collusion_groups[group_index]
             strategic_group_voting_options = get_strategic_options_for_group(original_system_prefs, scheme, collusion_group)
-            num_strategic_options += len(collusion_group) * len(strategic_group_voting_options)                                     # TODO remove with new risk function
+            num_strategic_voters += len(collusion_group)
 
             # options for groups are stored in rows so this is ugly af
             options_df = pd.DataFrame(strategic_group_voting_options)
@@ -87,7 +87,7 @@ def get_collusion_tva_result(original_system_prefs: SystemPreferences, schemes: 
 
         # sorted voters by key
         scheme_result["voters"] = [strategic_options_dict[voter_index] for voter_index in range(num_voters)]
-        scheme_result["strategic_voting_risk"] = get_strategic_voting_risk(num_strategic_options, num_groups, num_candidates)       # TODO change with new risk function
+        scheme_result["strategic_voting_risk"] = get_strategic_voting_risk(num_strategic_voters, num_groups)
         collusion_tva_result[scheme_name] = scheme_result
 
     return collusion_tva_result

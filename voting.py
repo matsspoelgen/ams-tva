@@ -133,16 +133,17 @@ def get_basic_tva_result(original_system_prefs: SystemPreferences, schemes: Dict
         scheme_result["non_strategic_overall_happiness"] = sum(non_strategic_happiness_levels)
         scheme_result["voters"] = []
 
-        num_strategic_options = 0
-        for voter_index in range(num_voters) :
+        num_strategic_voters = 0
+        for voter_index in range(num_voters):
             if runoff > 0:
                 strategic_voting_options = get_strategic_options_for_voter(original_system_prefs, voter_index, scheme, non_strategic_full_outcome, runoff)
             else:
                 strategic_voting_options = get_strategic_options_for_voter(original_system_prefs, voter_index, scheme)
-            num_strategic_options += len(strategic_voting_options)
+            if len(strategic_voting_options) >= 1:
+                num_strategic_voters += 1
             scheme_result["voters"].append(strategic_voting_options)
 
-        scheme_result["strategic_voting_risk"] = get_strategic_voting_risk(num_strategic_options, num_voters, num_candidates)
+        scheme_result["strategic_voting_risk"] = get_strategic_voting_risk(num_strategic_voters, num_voters)
         basic_tva_result[scheme_name] = scheme_result
 
 
@@ -151,9 +152,8 @@ def get_basic_tva_result(original_system_prefs: SystemPreferences, schemes: Dict
     return basic_tva_result
 
 
-def get_strategic_voting_risk(num_strategic_options: int, num_voters: int, num_candidates: int) -> float:
-    """ Ratio of strategic voting options to the total number of options. """
+def get_strategic_voting_risk(num_strategic_voters: int, num_voters: int) -> float:
+    """ Ratio of voters with strategic options to all voters. """
 
-    permutations_per_voter = math.factorial(num_candidates)
-    total_options = permutations_per_voter * num_voters
-    return num_strategic_options / total_options
+    return num_strategic_voters / num_voters
+
