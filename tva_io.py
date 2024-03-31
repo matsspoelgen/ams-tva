@@ -103,37 +103,69 @@ def scheme_by_name(scheme_name: str) -> Scheme:
     }
     return schemes[scheme_name] if scheme_name in schemes else None
 
+def validate_mode(mode: str):
+    """ Validate the mode argument. """
+    if mode not in ['basic', 'collusion', 'runoff']:
+        print("Invalid mode:", mode)
+        sys.exit(1)
+
+def validate_runoff(runoff: int, num_candidates: int):
+    """ Validate the runoff argument. """
+    if runoff < 0 or runoff > num_candidates - 1:
+        print("Invalid number of runoff elections:", runoff)
+        sys.exit(1)
+
 def parse_args():
     """ Parse command line arguments. """
 
     parser = argparse.ArgumentParser(description="Calculate TVA results for a set of preferences.")
     
-    # Positional argument
+    # Input file name
     parser.add_argument('input', type=str, help='Input file name.')
 
-    # String list argument
-    parser.add_argument('-s', '--schemes', nargs='+', type=str, help='List of voting schemes.', default=['plurality', 'voting_for_two', 'borda', 'anti_plurality'])
+    # Mode
+    parser.add_argument('mode', type=str, help='One of basic, runoff, collusion', default='basic')
+
+    # Schemes
+    parser.add_argument('-s', '--schemes', nargs='+', type=str, help='List of voting schemes. Available schemes: plurality, voting-for-two, borda, anti-plurality.', default=['plurality', 'voting_for_two', 'borda', 'anti_plurality'])
     
-    # Nested list argument. This will require custom parsing because argparse does not directly support nested lists.
-    parser.add_argument('-g', '--groups', type=str, help='Nested list of collusion groups.')
+    # String encoded group list
+    parser.add_argument('-g', '--groups', type=str, help='Nested list of collusion groups.', default='[]')
     
-    # Single string argument
+    # Output file name
     parser.add_argument('-o', '--output', type=str, help='Output file name.')
-    
+
+    # Number of runoff elections
+    parser.add_argument('-r', '--runoff', type=int, help='Number of runoff elections.', default=0)
+
+    # Runoff-Output file name
+    parser.add_argument('-ro', '--runoff_output', type=str, help='Runoff-Output file name.')
+
     args = parser.parse_args()
 
     # Read preferences from input file
     system_preferences = parse_prefs(args.input)
 
+    # Validation
+    validate_mode(args.mode)
+    print("Mode:", args.mode)
+
     # Set voting schemes
     schemes: List[Scheme] = parse_scheme_names(args.schemes)
     print("Voting schemes:", ", ".join(args.schemes))
 
+    # Validate runoff
+    if args.mode == 'runoff':
+        validate_runoff(args.runoff, len(system_preferences[0]))
+        print ("Number of runoff elections:", args.runoff)
+
     # Custom parsing for the nested list
-    groups: List[List[int]] = parse_groups(args.groups, list(range(len(system_preferences)))) if args.groups else []
-    print("Collusion groups:", groups)
+    groups: List[List[int]] = []
+    if args.mode == 'collusion':
+        groups = parse_groups(args.groups, list(range(len(system_preferences)))) if args.groups else []
+        print("Collusion groups:", groups)
     
-    return system_preferences, schemes, groups, args.output
+    return args.mode, system_preferences, schemes, groups, args.output, args.runoff, args.runoff_output
 
 def tva_result_to_json(basic_tva_result) -> str:
     """ Convert TVA result to a JSON string. """
