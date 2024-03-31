@@ -77,7 +77,7 @@ def get_strategic_options_for_voter(original_system_prefs: SystemPreferences, vo
         voter_prefs = list(permutation)
 
         # Update the system preferences (modified copy)
-        modified_system_prefs = [original_voter_prefs.copy() if voter_index != i else voter_prefs for i, original_voter_prefs in enumerate(original_system_prefs)]
+        modified_system_prefs = [original_voter_prefs if voter_index != i else voter_prefs for i, original_voter_prefs in enumerate(original_system_prefs)]
 
         # Calculate results for the current permutation
         if runoff > 0:
