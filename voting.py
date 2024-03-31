@@ -123,7 +123,7 @@ def get_basic_tva_result(original_system_prefs: SystemPreferences, schemes: Dict
     basic_tva_result = {}
     for scheme_name, scheme in schemes.items():
         if runoff > 0:
-            non_strategic_outcome, non_strategic_happiness_levels, non_strategic_full_outcome = get_vote_result(original_system_prefs, original_system_prefs, schemes, True)
+            non_strategic_outcome, non_strategic_happiness_levels, non_strategic_full_outcome = get_vote_result(original_system_prefs, original_system_prefs, scheme, True)
         else:
             non_strategic_outcome, non_strategic_happiness_levels = get_vote_result(original_system_prefs, original_system_prefs, scheme)
 
@@ -145,6 +145,9 @@ def get_basic_tva_result(original_system_prefs: SystemPreferences, schemes: Dict
         scheme_result["strategic_voting_risk"] = get_strategic_voting_risk(num_strategic_options, num_voters, num_candidates)
         basic_tva_result[scheme_name] = scheme_result
 
+
+    if runoff > 0:
+        return basic_tva_result, non_strategic_full_outcome
     return basic_tva_result
 
 
