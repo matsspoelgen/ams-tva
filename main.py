@@ -9,7 +9,6 @@ from voting import get_basic_tva_result
 def main(schemes: Dict[str, Scheme], collusion_groups: List[List[int]], input_file: str, output_file: str, runoff_output_file: str = "runoff_output.json", runoff_election : int = 0) -> None:
     preferences = read_preferences(input_file)
 
-    original_preferences = preferences.copy()
     # if runoff_election > 1:
     #     basic_tva_result, result = get_first_round_basic_tva_result(preferences, schemes, runoff=runoff_election)
     #     write_to_output(basic_tva_result, runoff_output_file)
@@ -22,9 +21,9 @@ def main(schemes: Dict[str, Scheme], collusion_groups: List[List[int]], input_fi
 
     # Performs tva for non strategic first round
     if runoff_election > 0:
-        basic_tva_result = get_basic_tva_result(preferences, schemes, real_prefs=original_preferences)
+        basic_tva_result = get_basic_tva_result(preferences, schemes)
     else:
-        basic_tva_result = get_basic_tva_result(preferences, schemes, real_prefs=original_preferences)
+        basic_tva_result = get_basic_tva_result(preferences, schemes)
     write_to_output(basic_tva_result, output_file)
 
     #TODO: fix happiness calculation for collusion
