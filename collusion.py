@@ -6,17 +6,18 @@ from tva_types import Scheme, SystemPreferences, VotingOption
 from voting import get_strategic_voting_risk, get_vote_result
 
 
-def get_strategic_options_for_group(system_preferences: SystemPreferences, scheme: Scheme, collusion_group: List[int]) -> List[VotingOption]:
+def get_strategic_options_for_group(original_system_prefs: SystemPreferences, scheme: Scheme, collusion_group: List[int]) -> List[VotingOption]:
     # calculate true group happiness
-    true_outcome, true_happiness_levels = get_vote_result(system_preferences, scheme)
-    return get_strategic_options_for_group_rek(system_preferences, true_happiness_levels, scheme, collusion_group, 0)
+    true_outcome, true_happiness_levels = get_vote_result(original_system_prefs, original_system_prefs, scheme)
+    modified_system_prefs = [pref.copy() for pref in original_system_prefs]
+    return get_strategic_options_for_group_rek(modified_system_prefs, original_system_prefs, true_happiness_levels, scheme, collusion_group, 0)
 
 
-def get_strategic_options_for_group_rek(system_preferences: SystemPreferences, true_happiness_levels: List[float], scheme: Scheme, collusion_group: List[int], depth: int, full_outcome: list[str] = [], runoff: int = 0, real_prefs: SystemPreferences = []) -> List[VotingOption]:
+def get_strategic_options_for_group_rek(modified_system_prefs: SystemPreferences, original_system_prefs: SystemPreferences, true_happiness_levels: List[float], scheme: Scheme, collusion_group: List[int], depth: int) -> List[VotingOption]:
 
     # the next voter is always first in the list
     voter_index = collusion_group[depth]
-    voter_original_prefs = system_preferences[voter_index]
+    voter_original_prefs = original_system_prefs[voter_index]
     voter_pref_permutations = list(permutations(voter_original_prefs))
     strategic_voting_options: List[List[VotingOption]] = []
 
@@ -25,12 +26,12 @@ def get_strategic_options_for_group_rek(system_preferences: SystemPreferences, t
 
         # update the system preferences
         voter_prefs = list(permutation)
-        system_preferences[voter_index] = voter_prefs
+        modified_system_prefs[voter_index] = voter_prefs
 
         if depth == len(collusion_group) - 1:
 
             # calculate the results for the current permutation
-            outcome, happiness_levels = get_vote_result(system_preferences, scheme)
+            outcome, happiness_levels = get_vote_result(modified_system_prefs, original_system_prefs, scheme)
 
             # check if the collusion group has higher overall happiness
             group_happiness = sum(happiness_levels[voter_index] for voter_index in collusion_group)
@@ -48,23 +49,23 @@ def get_strategic_options_for_group_rek(system_preferences: SystemPreferences, t
             strategic_voting_options.append([VotingOption(voter_prefs, outcome, happiness_levels[voter_index], true_happiness_levels[voter_index], group_happiness, true_group_happiness) for voter_index in collusion_group])
         else:
             # recursively call the function for the next voter in the collusion group
-            strategic_voting_options.extend(get_strategic_options_for_group_rek(system_preferences, true_happiness_levels, scheme, collusion_group, depth + 1, full_outcome, runoff, real_prefs))
+            strategic_voting_options.extend(get_strategic_options_for_group_rek(modified_system_prefs, original_system_prefs, true_happiness_levels, scheme, collusion_group, depth + 1))
 
     # restore the original preferences
-    system_preferences[voter_index] = voter_original_prefs
+    modified_system_prefs[voter_index] = voter_original_prefs
 
     return strategic_voting_options
 
-def get_collusion_tva_result(system_preferences: SystemPreferences, schemes: Dict[str, Scheme], collusion_groups: List[List[int]]) -> dict:
+def get_collusion_tva_result(original_system_prefs: SystemPreferences, schemes: Dict[str, Scheme], collusion_groups: List[List[int]]) -> dict:
     """ Calculate the basic TVA result for a given voting scheme and set of preferences. """
 
-    num_voters = len(system_preferences)
+    num_voters = len(original_system_prefs)
     num_groups = len(collusion_groups)
-    num_candidates = len(system_preferences[0])
+    num_candidates = len(original_system_prefs[0])
 
     collusion_tva_result = {}
     for scheme_name, scheme in schemes.items():
-        non_strategic_outcome, non_strategic_happiness_levels = get_vote_result(system_preferences, scheme)
+        non_strategic_outcome, non_strategic_happiness_levels = get_vote_result(original_system_prefs, original_system_prefs, scheme)
 
         scheme_result = {}
         scheme_result["non_strategic_outcome"] = non_strategic_outcome
@@ -76,7 +77,7 @@ def get_collusion_tva_result(system_preferences: SystemPreferences, schemes: Dic
         strategic_options_dict: Dict[int, List[VotingOption]] = {}
         for group_index in range(num_groups):
             collusion_group = collusion_groups[group_index]
-            strategic_group_voting_options = get_strategic_options_for_group(system_preferences, scheme, collusion_group)
+            strategic_group_voting_options = get_strategic_options_for_group(original_system_prefs, scheme, collusion_group)
             num_strategic_options += len(collusion_group) * len(strategic_group_voting_options)                                     # TODO remove with new risk function
 
             # options for groups are stored in rows so this is ugly af
