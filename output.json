@@ -29,13 +29,118 @@
         ],
         "non_strategic_overall_happiness": 3.0,
         "voters": [
-            [],
+            [
+                {
+                    "modified_preference_list": [
+                        "C",
+                        "D",
+                        "A",
+                        "B"
+                    ],
+                    "voting_outcome": "D",
+                    "voter_happiness": 0.33333333333333337,
+                    "true_voter_happiness": 0.0,
+                    "overall_happiness": 2.666666666666667,
+                    "true_overall_happiness": 3.0
+                },
+                {
+                    "modified_preference_list": [
+                        "C",
+                        "D",
+                        "B",
+                        "A"
+                    ],
+                    "voting_outcome": "D",
+                    "voter_happiness": 0.33333333333333337,
+                    "true_voter_happiness": 0.0,
+                    "overall_happiness": 2.666666666666667,
+                    "true_overall_happiness": 3.0
+                },
+                {
+                    "modified_preference_list": [
+                        "A",
+                        "D",
+                        "C",
+                        "B"
+                    ],
+                    "voting_outcome": "D",
+                    "voter_happiness": 0.33333333333333337,
+                    "true_voter_happiness": 0.0,
+                    "overall_happiness": 2.666666666666667,
+                    "true_overall_happiness": 3.0
+                },
+                {
+                    "modified_preference_list": [
+                        "A",
+                        "D",
+                        "B",
+                        "C"
+                    ],
+                    "voting_outcome": "D",
+                    "voter_happiness": 0.33333333333333337,
+                    "true_voter_happiness": 0.0,
+                    "overall_happiness": 2.666666666666667,
+                    "true_overall_happiness": 3.0
+                },
+                {
+                    "modified_preference_list": [
+                        "D",
+                        "C",
+                        "A",
+                        "B"
+                    ],
+                    "voting_outcome": "D",
+                    "voter_happiness": 0.33333333333333337,
+                    "true_voter_happiness": 0.0,
+                    "overall_happiness": 2.666666666666667,
+                    "true_overall_happiness": 3.0
+                },
+                {
+                    "modified_preference_list": [
+                        "D",
+                        "C",
+                        "B",
+                        "A"
+                    ],
+                    "voting_outcome": "D",
+                    "voter_happiness": 0.33333333333333337,
+                    "true_voter_happiness": 0.0,
+                    "overall_happiness": 2.666666666666667,
+                    "true_overall_happiness": 3.0
+                },
+                {
+                    "modified_preference_list": [
+                        "D",
+                        "A",
+                        "C",
+                        "B"
+                    ],
+                    "voting_outcome": "D",
+                    "voter_happiness": 0.33333333333333337,
+                    "true_voter_happiness": 0.0,
+                    "overall_happiness": 2.666666666666667,
+                    "true_overall_happiness": 3.0
+                },
+                {
+                    "modified_preference_list": [
+                        "D",
+                        "A",
+                        "B",
+                        "C"
+                    ],
+                    "voting_outcome": "D",
+                    "voter_happiness": 0.33333333333333337,
+                    "true_voter_happiness": 0.0,
+                    "overall_happiness": 2.666666666666667,
+                    "true_overall_happiness": 3.0
+                }
+            ],
             [],
             [],
             [],
             []
         ],
-        "strategic_voting_risk": 0.0
+        "strategic_voting_risk": 0.06666666666666667
     },
     "borda": {
         "non_strategic_outcome": "C",
@@ -60,8 +165,8 @@
                     "voting_outcome": "B",
                     "voter_happiness": 1.0,
                     "true_voter_happiness": 0.33333333333333337,
-                    "overall_happiness": 1.0,
-                    "true_overall_happiness": 0.33333333333333337
+                    "overall_happiness": 3.0,
+                    "true_overall_happiness": 3.333333333333334
                 },
                 {
                     "modified_preference_list": [
@@ -73,12 +178,39 @@
                     "voting_outcome": "B",
                     "voter_happiness": 1.0,
                     "true_voter_happiness": 0.33333333333333337,
-                    "overall_happiness": 1.0,
-                    "true_overall_happiness": 0.33333333333333337
+                    "overall_happiness": 3.0,
+                    "true_overall_happiness": 3.333333333333334
                 }
             ],
             [],
-            [],
+            [
+                {
+                    "modified_preference_list": [
+                        "B",
+                        "D",
+                        "A",
+                        "C"
+                    ],
+                    "voting_outcome": "B",
+                    "voter_happiness": 1.0,
+                    "true_voter_happiness": 0.33333333333333337,
+                    "overall_happiness": 3.0,
+                    "true_overall_happiness": 3.333333333333334
+                },
+                {
+                    "modified_preference_list": [
+                        "B",
+                        "A",
+                        "D",
+                        "C"
+                    ],
+                    "voting_outcome": "B",
+                    "voter_happiness": 1.0,
+                    "true_voter_happiness": 0.33333333333333337,
+                    "overall_happiness": 3.0,
+                    "true_overall_happiness": 3.333333333333334
+                }
+            ],
             [
                 {
                     "modified_preference_list": [
@@ -90,8 +222,8 @@
                     "voting_outcome": "B",
                     "voter_happiness": 1.0,
                     "true_voter_happiness": 0.6666666666666667,
-                    "overall_happiness": 1.0,
-                    "true_overall_happiness": 0.6666666666666667
+                    "overall_happiness": 3.0,
+                    "true_overall_happiness": 3.333333333333334
                 },
                 {
                     "modified_preference_list": [
@@ -103,8 +235,8 @@
                     "voting_outcome": "B",
                     "voter_happiness": 1.0,
                     "true_voter_happiness": 0.6666666666666667,
-                    "overall_happiness": 1.0,
-                    "true_overall_happiness": 0.6666666666666667
+                    "overall_happiness": 3.0,
+                    "true_overall_happiness": 3.333333333333334
                 },
                 {
                     "modified_preference_list": [
@@ -116,8 +248,8 @@
                     "voting_outcome": "B",
                     "voter_happiness": 1.0,
                     "true_voter_happiness": 0.6666666666666667,
-                    "overall_happiness": 1.0,
-                    "true_overall_happiness": 0.6666666666666667
+                    "overall_happiness": 3.0,
+                    "true_overall_happiness": 3.333333333333334
                 },
                 {
                     "modified_preference_list": [
@@ -129,8 +261,8 @@
                     "voting_outcome": "B",
                     "voter_happiness": 1.0,
                     "true_voter_happiness": 0.6666666666666667,
-                    "overall_happiness": 1.0,
-                    "true_overall_happiness": 0.6666666666666667
+                    "overall_happiness": 3.0,
+                    "true_overall_happiness": 3.333333333333334
                 },
                 {
                     "modified_preference_list": [
@@ -142,12 +274,12 @@
                     "voting_outcome": "B",
                     "voter_happiness": 1.0,
                     "true_voter_happiness": 0.6666666666666667,
-                    "overall_happiness": 1.0,
-                    "true_overall_happiness": 0.6666666666666667
+                    "overall_happiness": 3.0,
+                    "true_overall_happiness": 3.333333333333334
                 }
             ]
         ],
-        "strategic_voting_risk": 0.07291666666666667
+        "strategic_voting_risk": 0.075
     },
     "anti_plurality": {
         "non_strategic_outcome": "C",
@@ -172,8 +304,8 @@
                     "voting_outcome": "D",
                     "voter_happiness": 0.6666666666666667,
                     "true_voter_happiness": 0.33333333333333337,
-                    "overall_happiness": 0.6666666666666667,
-                    "true_overall_happiness": 0.33333333333333337
+                    "overall_happiness": 2.666666666666667,
+                    "true_overall_happiness": 3.333333333333334
                 },
                 {
                     "modified_preference_list": [
@@ -185,8 +317,8 @@
                     "voting_outcome": "D",
                     "voter_happiness": 0.6666666666666667,
                     "true_voter_happiness": 0.33333333333333337,
-                    "overall_happiness": 0.6666666666666667,
-                    "true_overall_happiness": 0.33333333333333337
+                    "overall_happiness": 2.666666666666667,
+                    "true_overall_happiness": 3.333333333333334
                 },
                 {
                     "modified_preference_list": [
@@ -198,8 +330,8 @@
                     "voting_outcome": "D",
                     "voter_happiness": 0.6666666666666667,
                     "true_voter_happiness": 0.33333333333333337,
-                    "overall_happiness": 0.6666666666666667,
-                    "true_overall_happiness": 0.33333333333333337
+                    "overall_happiness": 2.666666666666667,
+                    "true_overall_happiness": 3.333333333333334
                 },
                 {
                     "modified_preference_list": [
@@ -211,8 +343,8 @@
                     "voting_outcome": "D",
                     "voter_happiness": 0.6666666666666667,
                     "true_voter_happiness": 0.33333333333333337,
-                    "overall_happiness": 0.6666666666666667,
-                    "true_overall_happiness": 0.33333333333333337
+                    "overall_happiness": 2.666666666666667,
+                    "true_overall_happiness": 3.333333333333334
                 },
                 {
                     "modified_preference_list": [
@@ -224,8 +356,8 @@
                     "voting_outcome": "D",
                     "voter_happiness": 0.6666666666666667,
                     "true_voter_happiness": 0.33333333333333337,
-                    "overall_happiness": 0.6666666666666667,
-                    "true_overall_happiness": 0.33333333333333337
+                    "overall_happiness": 2.666666666666667,
+                    "true_overall_happiness": 3.333333333333334
                 },
                 {
                     "modified_preference_list": [
@@ -237,14 +369,93 @@
                     "voting_outcome": "D",
                     "voter_happiness": 0.6666666666666667,
                     "true_voter_happiness": 0.33333333333333337,
-                    "overall_happiness": 0.6666666666666667,
-                    "true_overall_happiness": 0.33333333333333337
+                    "overall_happiness": 2.666666666666667,
+                    "true_overall_happiness": 3.333333333333334
                 }
             ],
             [],
-            [],
+            [
+                {
+                    "modified_preference_list": [
+                        "B",
+                        "D",
+                        "A",
+                        "C"
+                    ],
+                    "voting_outcome": "D",
+                    "voter_happiness": 0.6666666666666667,
+                    "true_voter_happiness": 0.33333333333333337,
+                    "overall_happiness": 2.666666666666667,
+                    "true_overall_happiness": 3.333333333333334
+                },
+                {
+                    "modified_preference_list": [
+                        "B",
+                        "A",
+                        "D",
+                        "C"
+                    ],
+                    "voting_outcome": "D",
+                    "voter_happiness": 0.6666666666666667,
+                    "true_voter_happiness": 0.33333333333333337,
+                    "overall_happiness": 2.666666666666667,
+                    "true_overall_happiness": 3.333333333333334
+                },
+                {
+                    "modified_preference_list": [
+                        "D",
+                        "B",
+                        "A",
+                        "C"
+                    ],
+                    "voting_outcome": "D",
+                    "voter_happiness": 0.6666666666666667,
+                    "true_voter_happiness": 0.33333333333333337,
+                    "overall_happiness": 2.666666666666667,
+                    "true_overall_happiness": 3.333333333333334
+                },
+                {
+                    "modified_preference_list": [
+                        "D",
+                        "A",
+                        "B",
+                        "C"
+                    ],
+                    "voting_outcome": "D",
+                    "voter_happiness": 0.6666666666666667,
+                    "true_voter_happiness": 0.33333333333333337,
+                    "overall_happiness": 2.666666666666667,
+                    "true_overall_happiness": 3.333333333333334
+                },
+                {
+                    "modified_preference_list": [
+                        "A",
+                        "B",
+                        "D",
+                        "C"
+                    ],
+                    "voting_outcome": "D",
+                    "voter_happiness": 0.6666666666666667,
+                    "true_voter_happiness": 0.33333333333333337,
+                    "overall_happiness": 2.666666666666667,
+                    "true_overall_happiness": 3.333333333333334
+                },
+                {
+                    "modified_preference_list": [
+                        "A",
+                        "D",
+                        "B",
+                        "C"
+                    ],
+                    "voting_outcome": "D",
+                    "voter_happiness": 0.6666666666666667,
+                    "true_voter_happiness": 0.33333333333333337,
+                    "overall_happiness": 2.666666666666667,
+                    "true_overall_happiness": 3.333333333333334
+                }
+            ],
             []
         ],
-        "strategic_voting_risk": 0.0625
+        "strategic_voting_risk": 0.1
     }
 }
