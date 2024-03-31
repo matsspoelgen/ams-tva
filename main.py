@@ -5,9 +5,6 @@ from voting import get_basic_tva_result
 if __name__ == "__main__":
     mode, system_preferences, schemes, collusion_groups, output_file, runoff_elections, runoff_output_file = parse_args()
 
-    output_file = "output.json"
-    runoff_output_file = "runoff_output.json"
-
     if mode == 'basic':
         tva_result = get_basic_tva_result(system_preferences, schemes)
         write_to_output(tva_result, output_file)
@@ -27,3 +24,4 @@ if __name__ == "__main__":
 
         if runoff_elections > 0:
             tva_result = get_basic_tva_result(system_preferences, schemes)
+            write_to_output(tva_result, output_file)
