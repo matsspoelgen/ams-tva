@@ -33,6 +33,10 @@ def get_strategic_options_for_group_rek(modified_system_prefs: SystemPreferences
             # calculate the results for the current permutation
             outcome, happiness_levels = get_vote_result(modified_system_prefs, original_system_prefs, scheme)
 
+            # overall happiness
+            overall_happiness = sum(happiness_levels)
+            true_overall_happiness = sum(true_happiness_levels)
+
             # check if the collusion group has higher overall happiness
             group_happiness = sum(happiness_levels[voter_index] for voter_index in collusion_group)
             true_group_happiness = sum(true_happiness_levels[voter_index] for voter_index in collusion_group)
@@ -46,7 +50,7 @@ def get_strategic_options_for_group_rek(modified_system_prefs: SystemPreferences
                 continue
 
             # store the strategic voting options
-            strategic_voting_options.append([VotingOption(voter_prefs, outcome, happiness_levels[voter_index], true_happiness_levels[voter_index], group_happiness, true_group_happiness) for voter_index in collusion_group])
+            strategic_voting_options.append([VotingOption(voter_prefs, outcome, happiness_levels[voter_index], true_happiness_levels[voter_index], overall_happiness, true_overall_happiness) for voter_index in collusion_group])
         else:
             # recursively call the function for the next voter in the collusion group
             strategic_voting_options.extend(get_strategic_options_for_group_rek(modified_system_prefs, original_system_prefs, true_happiness_levels, scheme, collusion_group, depth + 1))
@@ -61,7 +65,6 @@ def get_collusion_tva_result(original_system_prefs: SystemPreferences, schemes: 
 
     num_voters = len(original_system_prefs)
     num_groups = len(collusion_groups)
-    num_candidates = len(original_system_prefs[0])
 
     collusion_tva_result = {}
     for scheme_name, scheme in schemes.items():
@@ -78,7 +81,9 @@ def get_collusion_tva_result(original_system_prefs: SystemPreferences, schemes: 
         for group_index in range(num_groups):
             collusion_group = collusion_groups[group_index]
             strategic_group_voting_options = get_strategic_options_for_group(original_system_prefs, scheme, collusion_group)
-            num_strategic_voters += len(collusion_group)
+
+            if len(strategic_group_voting_options) > 0:
+                num_strategic_voters += len(collusion_group)
 
             # options for groups are stored in rows so this is ugly af
             options_df = pd.DataFrame(strategic_group_voting_options)
@@ -87,7 +92,7 @@ def get_collusion_tva_result(original_system_prefs: SystemPreferences, schemes: 
 
         # sorted voters by key
         scheme_result["voters"] = [strategic_options_dict[voter_index] for voter_index in range(num_voters)]
-        scheme_result["strategic_voting_risk"] = get_strategic_voting_risk(num_strategic_voters, num_groups)
+        scheme_result["strategic_voting_risk"] = get_strategic_voting_risk(num_strategic_voters, num_voters)
         collusion_tva_result[scheme_name] = scheme_result
 
     return collusion_tva_result

@@ -140,7 +140,7 @@
             [],
             []
         ],
-        "strategic_voting_risk": 0.06666666666666667
+        "strategic_voting_risk": 0.2
     },
     "borda": {
         "non_strategic_outcome": "C",
@@ -279,7 +279,7 @@
                 }
             ]
         ],
-        "strategic_voting_risk": 0.075
+        "strategic_voting_risk": 0.6
     },
     "anti_plurality": {
         "non_strategic_outcome": "C",
@@ -456,6 +456,6 @@
             ],
             []
         ],
-        "strategic_voting_risk": 0.1
+        "strategic_voting_risk": 0.4
     }
 }

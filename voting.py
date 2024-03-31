@@ -1,8 +1,7 @@
 from random import randrange
 from itertools import permutations
 from typing import Dict, List
-from tva_types import SystemPreferences, Scheme, VoteProps, VoterPreferences, VotingOption
-import math
+from tva_types import SystemPreferences, Scheme, VotingOption
 
 def happiness(original_prefs: SystemPreferences, outcome: str) -> List[float]:
     """ Calculate the happiness levels for each voter based on the outcome. """
@@ -118,7 +117,6 @@ def get_basic_tva_result(original_system_prefs: SystemPreferences, schemes: Dict
     """ Calculate the basic TVA result for a given voting scheme and set of preferences. """
 
     num_voters = len(original_system_prefs)
-    num_candidates = len(original_system_prefs[0])
 
     basic_tva_result = {}
     for scheme_name, scheme in schemes.items():
@@ -145,7 +143,6 @@ def get_basic_tva_result(original_system_prefs: SystemPreferences, schemes: Dict
 
         scheme_result["strategic_voting_risk"] = get_strategic_voting_risk(num_strategic_voters, num_voters)
         basic_tva_result[scheme_name] = scheme_result
-
 
     if runoff > 0:
         return basic_tva_result, non_strategic_full_outcome
